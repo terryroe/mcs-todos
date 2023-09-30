@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { API_URL } from './data/api';
+import Todos from './components/Todos';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -16,9 +17,8 @@ function App() {
 
   return (
     <>
-      {todos.map((todo) => (
-        <div>{todo.title}</div>
-      ))}
+      <h1>MCS Todos</h1>
+      <Todos todos={todos} />
     </>
   );
 }
