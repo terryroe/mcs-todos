@@ -17,8 +17,10 @@ function App() {
 
   return (
     <>
-      <h1>MCS Todos</h1>
-      <Todos todos={todos} />
+      <div className="container">
+        <h1 className="text-center my-4">MCS Todos</h1>
+        <Todos todos={todos} />
+      </div>
     </>
   );
 }

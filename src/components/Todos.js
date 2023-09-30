@@ -1,8 +1,10 @@
 const Todos = ({ todos }) => {
   return (
-    <ul>
+    <ul className="list-group">
       {todos.map((todo) => (
-        <li key={todo.id}>{todo.title}</li>
+        <li key={todo.id} className="list-group-item">
+          {todo.title}
+        </li>
       ))}
     </ul>
   );
