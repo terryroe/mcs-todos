@@ -2,10 +2,13 @@ const Todos = ({ todos, deleteTodo, updateTodo }) => {
   return (
     <ul className="list-group">
       {todos.map((todo) => (
-        <li key={todo.id} className="row mb-4 border-bottom">
-          <div className="col-md-6">{todo.title}</div>
-          <div className="col-md-3">
-            <label htmlFor={`completed-${todo.id}`}>Completed:</label>
+        <li
+          key={todo.id}
+          className="d-flex list-group-item align-items-center justify-content-between"
+        >
+          {todo.title}
+
+          <div>
             <input
               id={`completed-${todo.id}`}
               type="checkbox"
@@ -14,10 +17,12 @@ const Todos = ({ todos, deleteTodo, updateTodo }) => {
                 updateTodo({ ...todo, completed: !todo.completed })
               }
             />
-          </div>
-          <div className="col-md-3 text-end">
+            <label htmlFor={`completed-${todo.id}`} className="mx-4">
+              Completed
+            </label>
+
             <button
-              className="btn btn-danger mb-3"
+              className="btn btn-danger"
               onClick={() => deleteTodo(todo.id)}
             >
               Delete

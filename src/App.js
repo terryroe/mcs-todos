@@ -23,7 +23,6 @@ function App() {
   };
 
   const updateTodo = async (todoToUpdate) => {
-    console.log('updateTodo', todoToUpdate);
     setTodos(
       todos.map((todo) =>
         todo.id === todoToUpdate.id ? { ...todo, ...todoToUpdate } : todo
