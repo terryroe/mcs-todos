@@ -15,11 +15,18 @@ function App() {
     getTodos();
   }, []);
 
+  const deleteTodo = async (todoId) => {
+    await fetch(`${API_URL}/${todoId}`, {
+      method: 'DELETE',
+    });
+    setTodos(todos.filter((todo) => todo.id !== todoId));
+  };
+
   return (
     <>
       <div className="container">
         <h1 className="text-center my-4">MCS Todos</h1>
-        <Todos todos={todos} />
+        <Todos todos={todos} deleteTodo={deleteTodo} />
       </div>
     </>
   );
