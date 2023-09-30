@@ -16,17 +16,31 @@ function App() {
   }, []);
 
   const deleteTodo = async (todoId) => {
+    setTodos(todos.filter((todo) => todo.id !== todoId));
     await fetch(`${API_URL}/${todoId}`, {
       method: 'DELETE',
     });
-    setTodos(todos.filter((todo) => todo.id !== todoId));
+  };
+
+  const updateTodo = async (todoToUpdate) => {
+    console.log('updateTodo', todoToUpdate);
+    setTodos(
+      todos.map((todo) =>
+        todo.id === todoToUpdate.id ? { ...todo, ...todoToUpdate } : todo
+      )
+    );
+    await fetch(`${API_URL}/${todoToUpdate.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(todoToUpdate),
+    });
   };
 
   return (
     <>
       <div className="container">
         <h1 className="text-center my-4">MCS Todos</h1>
-        <Todos todos={todos} deleteTodo={deleteTodo} />
+        <Todos todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo} />
       </div>
     </>
   );
