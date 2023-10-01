@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { API_URL } from './data/api';
 import Todos from './components/Todos';
+import TodoForm from './components/TodoForm';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -35,10 +36,22 @@ function App() {
     });
   };
 
+  const createTodo = async (newTodo) => {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newTodo),
+    });
+    const data = await response.json();
+    setTodos(todos.concat(data));
+  };
+
   return (
     <>
       <div className="container">
         <h1 className="text-center my-4">MCS Todos</h1>
+        <TodoForm createTodo={createTodo} />
+        <hr />
         <Todos todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo} />
       </div>
     </>
