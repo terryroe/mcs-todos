@@ -20,22 +20,28 @@ const TodoForm = ({ createTodo }) => {
 
   return (
     <>
-      <h3>New Todo</h3>
+      <h3>Enter New Todo</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          className="form-control mb-3"
           placeholder="Enter new todo"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <input
-          id="completed"
-          type="checkbox"
-          checked={completed}
-          onChange={() => setCompleted(!completed)}
-        />
-        <label htmlFor="completed">Completed</label>
+        <div className="form-check form-check-inline">
+          <input
+            id="completed"
+            type="checkbox"
+            className="form-check-input"
+            checked={completed}
+            onChange={() => setCompleted(!completed)}
+          />
+          <label htmlFor="completed" className="form-check-label">
+            Completed
+          </label>
+        </div>
 
         <button className="btn btn-primary">Add New Todo</button>
       </form>

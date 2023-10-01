@@ -51,7 +51,7 @@ function App() {
       <div className="container">
         <h1 className="text-center my-4">MCS Todos</h1>
         <TodoForm createTodo={createTodo} />
-        <hr />
+        <hr className="my-4" />
         <Todos todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo} />
       </div>
     </>

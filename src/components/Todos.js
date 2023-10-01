@@ -9,17 +9,23 @@ const Todos = ({ todos, deleteTodo, updateTodo }) => {
           {todo.title}
 
           <div>
-            <input
-              id={`completed-${todo.id}`}
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() =>
-                updateTodo({ ...todo, completed: !todo.completed })
-              }
-            />
-            <label htmlFor={`completed-${todo.id}`} className="mx-4">
-              Completed
-            </label>
+            <div className="form-check form-check-inline">
+              <input
+                id={`completed-${todo.id}`}
+                type="checkbox"
+                className="form-check-input"
+                checked={todo.completed}
+                onChange={() =>
+                  updateTodo({ ...todo, completed: !todo.completed })
+                }
+              />
+              <label
+                htmlFor={`completed-${todo.id}`}
+                className="form-check-label me-4"
+              >
+                Completed
+              </label>
+            </div>
 
             <button
               className="btn btn-danger"
