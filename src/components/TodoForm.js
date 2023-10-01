@@ -1,19 +1,32 @@
 import { useState } from 'react';
 
+// Form to create a new todo.  Utilizes a function from the parent (createTodo)
+// to perform the create/save action.
 const TodoForm = ({ createTodo }) => {
+  // Use state to handle the inputs from the form.
   const [title, setTitle] = useState('');
   const [completed, setCompleted] = useState(false);
 
+  // Handle submit for the entire form so that hitting enter in will submit the
+  // form as well.
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Make sure the user entered something in the form.
+    if (title.length === 0) {
+      alert('Please enter something for the todo.');
+      return;
+    }
 
     const newTodo = {
       title,
       completed,
     };
 
+    // Call the parent function to create the new todo.
     createTodo(newTodo);
 
+    // Clear out the entries in preparation for the new submission.
     setTitle('');
     setCompleted(false);
   };
